@@ -1,3 +1,7 @@
 r <- plumber::plumb(here::here("R/api.R"))
-r$run(port = 8000)
+
+bind_addr <- Sys.getenv("OPTISEL_BIND_ADDR", "localhost") 
+port <- Sys.getenv("OPTISEL_PORT", "31113") 
+
+r$run(host = get("bind_addr"), port = as.integer(get("port")), debug = TRUE)
 

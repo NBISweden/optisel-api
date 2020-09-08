@@ -1,14 +1,15 @@
 library(plumber)
 library(jsonlite)
-source("optisel.R")
+source("/usr/local/optisel/R/optisel.R")
 
+#* @get /inbreeding
 inbreeding <- function(req) {
-  example <- req$postBody
-  parsed_example <- jsonlite::fromJSON(example)
-  pkin <- calculate_inbreeding() 
+  pin <- calculate_inbreeding()
+  ret <- pin[2][1]
 }
 
+#* @get /kinship
 kinship <- function(req) {
-  example <- req$postBody
-  parsed_example <- jsonlite::fromJSON(example)
+  pkin <- calculate_kinship()
+  ret <- pkin[1]
 }
